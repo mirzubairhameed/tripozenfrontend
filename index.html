@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TripOzen — Your Journey Starts Here</title>
+    <meta
+      name="description"
+      content="TripOzen helps you plan unforgettable trips and travel experiences. Contact us to book your next journey."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300;1,9..40,400&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- NAVBAR -->
+    <nav class="navbar" id="navbar">
+      <div class="nav-inner">
+        <a href="#home" class="nav-logo">
+          <svg class="logo-svg" viewBox="0 0 180 44" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="TripOzen">
+            <rect x="1" y="2" width="40" height="40" rx="10" fill="url(#logoGrad)" />
+            <path d="M12 14h16M20 14v18" stroke="#0c0f0e" stroke-width="3.2" stroke-linecap="round" />
+            <text x="50" y="30" font-family="'Playfair Display',Georgia,serif" font-size="24" font-weight="600" fill="#f3efe7" letter-spacing="0.5">Trip</text>
+            <text x="103" y="30" font-family="'Playfair Display',Georgia,serif" font-size="24" font-weight="600" fill="#e2b13f" letter-spacing="0.5">Ozen</text>
+            <defs>
+              <linearGradient id="logoGrad" x1="1" y1="2" x2="41" y2="42" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#eec25e" />
+                <stop offset="1" stop-color="#c9962c" />
+              </linearGradient>
+            </defs>
+          </svg>
+        </a>
+        <ul class="nav-links" id="navLinks">
+          <!-- Populated by JS -->
+        </ul>
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+          <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+          <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+        </button>
+        <a href="#contact" class="nav-cta">Book Your Trip</a>
+        <button
+          class="nav-toggle"
+          id="navToggle"
+          aria-label="Toggle navigation"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+      <!-- Mobile menu -->
+      <div class="mobile-menu" id="mobileMenu">
+        <ul class="mobile-nav-links" id="mobileNavLinks">
+          <!-- Populated by JS -->
+        </ul>
+        <a href="#contact" class="mobile-cta">Book Your Trip</a>
+      </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero" id="home">
+      <div class="hero-bg">
+        <img
+          src="hero.jpg"
+          alt="Kashmir landscape"
+          class="hero-img"
+        />
+        <div class="hero-overlay"></div>
+      </div>
+      <div class="hero-content">
+        <div class="hero-badge" data-reveal>Travel Experiences</div>
+        <h1 class="hero-title" data-reveal data-reveal-delay="100">
+          Your Journey Starts Here.
+        </h1>
+        <p class="hero-subtitle" data-reveal data-reveal-delay="200">
+          We help you plan unforgettable trips and travel experiences. From
+          stunning destinations to curated itineraries — TripOzen is your
+          trusted travel partner.
+        </p>
+        <div class="hero-actions" data-reveal data-reveal-delay="300">
+          <a href="#destinations" class="btn btn-primary">
+            <span>Explore Destinations</span>
+            <svg
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M5 12h14M12 5l7 7-7 7" />
+            </svg>
+          </a>
+          <a href="#contact" class="btn btn-outline">Plan Your Trip</a>
+        </div>
+      </div>
+      <div class="hero-scroll" data-reveal data-reveal-delay="500">
+        <span>Scroll to explore</span>
+        <div class="scroll-line"></div>
+      </div>
+    </section>
+
+    <!-- DESTINATIONS -->
+    <section class="section destinations" id="destinations">
+      <div class="container">
+        <div class="section-header" data-reveal>
+          <span class="section-tag">Top Destinations</span>
+          <h2 class="section-title">
+            Where Will You <span class="gold">Go?</span>
+          </h2>
+          <p class="section-desc">
+            From the snow-capped peaks of Gulmarg to the houseboats of
+            Srinagar — explore handpicked Kashmir destinations that promise
+            unforgettable experiences.
+          </p>
+        </div>
+        <div class="dest-grid" id="destGrid">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- GALLERY -->
+    <section class="section gallery" id="gallery">
+      <div class="container">
+        <div class="section-header" data-reveal>
+          <span class="section-tag">Gallery</span>
+          <h2 class="section-title">
+            Moments From <span class="gold">Paradise</span>
+          </h2>
+          <p class="section-desc">
+            A glimpse of Kashmir's breathtaking landscapes and the luxury stays
+            we book for our travellers.
+          </p>
+        </div>
+        <div class="gallery-grid" id="galleryGrid">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- WHY TRIPOZEN -->
+    <section class="section why" id="why">
+      <div class="container">
+        <div class="why-layout" data-reveal>
+          <div class="why-left" data-reveal>
+            <span class="section-tag">Why TripOzen</span>
+            <h2 class="section-title">
+              Travel With a Team That <span class="gold">Cares</span>
+            </h2>
+            <p class="section-desc">
+              We're not a faceless booking platform. We're a team of travel
+              enthusiasts who personally help you plan every detail of your
+              trip.
+            </p>
+          </div>
+          <div class="why-right" id="whyGrid">
+            <!-- Populated by JS -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="section about" id="about">
+      <div class="container">
+        <div class="about-layout">
+          <div class="about-image" data-reveal>
+            <img
+              src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80"
+              alt="Kashmir valley landscape"
+            />
+          </div>
+          <div class="about-content" data-reveal data-reveal-delay="100">
+            <span class="section-tag">About TripOzen</span>
+            <h2 class="section-title">
+              We Plan Trips. <span class="gold">You Make Memories.</span>
+            </h2>
+            <p>
+              TripOzen was born from a simple belief: planning a trip should be
+              as exciting as the trip itself. We're a small, passionate team
+              that works closely with travelers to design trips that feel
+              personal, not packaged.
+            </p>
+            <p>
+              We handle the research, the planning, and the details — so you
+              can focus on the experience. No algorithms, no automated
+              itineraries. Just real people who love travel, helping you
+              travel better.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FINAL CTA -->
+    <section class="section cta-section" id="contact">
+      <div class="cta-bg">
+        <img
+          src="contact-bg.jpg"
+          alt="Kashmir landscape"
+          class="cta-bg-img"
+        />
+        <div class="cta-overlay"></div>
+      </div>
+      <div class="container cta-container">
+        <div class="cta-content" data-reveal>
+          <h2 class="cta-title">
+            Ready to Plan Your <span class="gold">Next Trip?</span>
+          </h2>
+          <p class="cta-desc">
+            Tell us where you want to go. Our travel team will help you plan
+            the journey.
+          </p>
+          <div class="contact-wrap">
+            <form class="contact-form" id="contactForm">
+              <div class="form-header">
+                <div class="form-header-icon">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+                </div>
+                <div>
+                  <h3 class="form-title">Send Us a Message</h3>
+                  <p class="form-subtitle">We'll get back to you within 24 hours</p>
+                </div>
+              </div>
+              <div class="form-fields">
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="contactName">Full Name</label>
+                    <input type="text" id="contactName" name="name" placeholder="Rahul Sharma" required />
+                  </div>
+                  <div class="form-group">
+                    <label for="contactPhone">Phone Number</label>
+                    <input type="tel" id="contactPhone" name="phone" placeholder="+91 98765 43210" required />
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="contactEmail">Email Address</label>
+                  <input type="email" id="contactEmail" name="email" placeholder="rahul@example.com" required />
+                </div>
+                <div class="form-group">
+                  <label for="contactDest">Destination Interested In</label>
+                  <select id="contactDest" name="destination">
+                    <option value="">Select a destination</option>
+                    <option value="gulmarg">Gulmarg</option>
+                    <option value="srinagar">Srinagar</option>
+                    <option value="pahalgam">Pahalgam</option>
+                    <option value="sonamarg">Sonamarg</option>
+                    <option value="leh-ladakh">Leh & Ladakh</option>
+                    <option value="doodhpathri">Doodhpathri</option>
+                    <option value="other">Not sure yet</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="contactMessage">Your Message</label>
+                  <textarea id="contactMessage" name="message" rows="3" placeholder="Travel dates, group size, budget, special requests..."></textarea>
+                </div>
+              </div>
+              <button type="submit" class="form-submit-btn">
+                <span>Send Message</span>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <a href="#home" class="nav-logo">
+              <svg class="logo-svg" viewBox="0 0 180 44" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="TripOzen">
+                <rect x="1" y="2" width="40" height="40" rx="10" fill="url(#logoGradF)" />
+                <path d="M12 14h16M20 14v18" stroke="#0c0f0e" stroke-width="3.2" stroke-linecap="round" />
+                <text x="50" y="30" font-family="'Playfair Display',Georgia,serif" font-size="24" font-weight="600" fill="#f3efe7" letter-spacing="0.5">Trip</text>
+                <text x="103" y="30" font-family="'Playfair Display',Georgia,serif" font-size="24" font-weight="600" fill="#e2b13f" letter-spacing="0.5">Ozen</text>
+                <defs>
+                  <linearGradient id="logoGradF" x1="1" y1="2" x2="41" y2="42" gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#eec25e" />
+                    <stop offset="1" stop-color="#c9962c" />
+                  </linearGradient>
+                </defs>
+              </svg>
+            </a>
+            <p class="footer-desc">
+              Helping travelers plan unforgettable journeys. Personalized
+              trips, curated experiences, and a team that truly cares about
+              your travel.
+            </p>
+          </div>
+          <div class="footer-col">
+            <h4>Quick Links</h4>
+            <ul id="footerLinks">
+              <!-- Populated by JS -->
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>Get in Touch</h4>
+            <ul>
+              <li>
+                <a href="mailto:booking@tripozen.co.in"
+                  >booking@tripozen.co.in</a
+                >
+              </li>
+              <li><a href="tel:+919682328595">+91 96823 28595</a></li>
+              <li>
+                <a
+                  href="https://wa.me/919682328595"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >WhatsApp</a
+                >
+              </li>
+              <li>
+                <a href="https://tripozen.co.in" target="_blank" rel="noopener noreferrer"
+                >tripozen.co.in</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>&copy; 2026 TripOzen. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="data.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
