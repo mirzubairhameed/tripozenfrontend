@@ -1091,6 +1091,39 @@ html[data-theme="light"] .theme-toggle .moon-icon {
   transform: translateY(0);
 }
 
+.form-submit-btn:disabled {
+  opacity: 0.65;
+  cursor: progress;
+  transform: none;
+  box-shadow: 0 6px 24px rgba(226, 177, 63, 0.2);
+}
+
+/* Contact form status message (success / error) */
+.form-status {
+  font-size: 14px;
+  line-height: 1.5;
+  text-align: center;
+  border-radius: var(--radius-sm);
+}
+
+.form-status.success,
+.form-status.error {
+  margin-top: 18px;
+  padding: 14px 18px;
+}
+
+.form-status.success {
+  background: rgba(46, 160, 90, 0.12);
+  border: 1px solid rgba(46, 160, 90, 0.4);
+  color: #7ee0a3;
+}
+
+.form-status.error {
+  background: rgba(214, 78, 78, 0.12);
+  border: 1px solid rgba(214, 78, 78, 0.42);
+  color: #f0a6a6;
+}
+
 @media (max-width: 768px) {
   .contact-wrap {
     grid-template-columns: 1fr;

@@ -67,25 +67,79 @@ document.addEventListener("DOMContentLoaded", () => {
     `).join("");
   }
 
-  // ---------- Contact form ----------
+  // ---------- Contact form (Web3Forms) ----------
   const contactForm = document.getElementById("contactForm");
   if (contactForm) {
-    contactForm.addEventListener("submit", (e) => {
+    // Public Web3Forms access key — safe to use in client-side code.
+    const WEB3FORMS_ACCESS_KEY = "0cf0d8f4-96f2-41e9-88a5-9f1e89c3e77c";
+
+    const formStatus = document.getElementById("formStatus");
+    const submitBtn = contactForm.querySelector(".form-submit-btn");
+    const submitBtnLabel = submitBtn?.querySelector("span");
+    const defaultBtnText = submitBtnLabel?.textContent || "Send Message";
+
+    const setStatus = (message, type) => {
+      if (!formStatus) return;
+      formStatus.textContent = message;
+      formStatus.className = "form-status" + (type ? " " + type : "");
+    };
+
+    contactForm.addEventListener("submit", async (e) => {
       e.preventDefault();
-      const name = document.getElementById("contactName")?.value || "";
-      const phone = document.getElementById("contactPhone")?.value || "";
-      const email = document.getElementById("contactEmail")?.value || "";
-      const dest = document.getElementById("contactDest")?.value || "";
-      const message = document.getElementById("contactMessage")?.value || "";
 
-      const destLabel = document.getElementById("contactDest")?.selectedOptions[0]?.text || "";
-      const destLine = dest ? `Destination: ${destLabel}` : "";
+      const name = document.getElementById("contactName")?.value.trim() || "";
+      const destLabel =
+        document.getElementById("contactDest")?.selectedOptions[0]?.text || "";
 
-      const subject = encodeURIComponent(`Trip Inquiry from ${name}`);
-      const body = encodeURIComponent(
-        `Name: ${name}\nPhone: ${phone}\nEmail: ${email}\n${destLine}\n\nMessage:\n${message}`
-      );
-      window.location.href = `mailto:${SITE.email}?subject=${subject}&body=${body}`;
+      // Build the payload from the form fields.
+      const payload = Object.fromEntries(new FormData(contactForm).entries());
+      payload.access_key = WEB3FORMS_ACCESS_KEY;
+      payload.subject = name
+        ? `New Trip Inquiry from ${name}`
+        : "New Trip Inquiry — TripOzen";
+      payload.from_name = "TripOzen Website";
+      // Send the human-readable destination instead of the option value.
+      if (payload.destination) payload.destination = destLabel;
+
+      // Loading state
+      submitBtn?.setAttribute("disabled", "true");
+      if (submitBtnLabel) submitBtnLabel.textContent = "Sending...";
+      setStatus("", "");
+
+      try {
+        const res = await fetch("https://api.web3forms.com/submit", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+          body: JSON.stringify(payload),
+        });
+        const data = await res.json();
+
+        if (res.ok && data.success) {
+          contactForm.reset();
+          setStatus(
+            "Thank you! Your message has been sent — we'll get back to you within 24 hours.",
+            "success"
+          );
+        } else {
+          setStatus(
+            data.message ||
+              "Something went wrong. Please try again, or email us directly at " +
+                SITE.email + ".",
+            "error"
+          );
+        }
+      } catch (err) {
+        setStatus(
+          "Network error — please check your connection and try again.",
+          "error"
+        );
+      } finally {
+        submitBtn?.removeAttribute("disabled");
+        if (submitBtnLabel) submitBtnLabel.textContent = defaultBtnText;
+      }
     });
   }
 
